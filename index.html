@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F6F1E6">
+<title>בית ספר קדרון | Kidron School</title>
+<meta name="description" content="בית ספר קדרון – בית ספר ממ״ד קהילתי וסביבתי באבנת, מועצה אזורית מגילות ים המלח.">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Rubik:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6F1E6; --paper:#FBF8F1; --sand:#E6DAB9; --sand-2:#EFE6CE;
+  --stone:#A8A89A; --olive:#686559; --ink:#433B2E; --ink-2:#5E5545;
+  --earth:#A97A45; --earth-d:#8C6232; --ochre:#D5AD71;
+  --sky:#C3D0D3; --stream:#6E9FC6; --stream-d:#4F82AB;
+  --radius:18px; --shadow:0 10px 30px -14px rgba(67,59,46,.35);
+  --serif:"Rubik","Assistant",system-ui,sans-serif; --sans:"Assistant",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--stream-d)}
+body.l-he .en, body.l-en .he{display:none!important}
+body.l-en{direction:ltr}
+h1,h2,h3{font-family:var(--serif);line-height:1.2;margin:0 0 .5em;color:var(--ink)}
+h1{font-size:clamp(2.1rem,5vw,3.7rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:600}
+h3{font-size:1.25rem;font-weight:600}
+p{margin:0 0 1em}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+.eyebrow{font-weight:700;letter-spacing:.06em;color:var(--earth);font-size:.9rem;text-transform:uppercase;margin-bottom:.6em;display:block}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:.8em 1.5em;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font:inherit;font-weight:700;transition:transform .15s, background .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--earth);color:#fff}
+.btn-primary:hover{background:var(--earth-d)}
+.btn-ghost{border-color:currentColor;color:var(--ink);background:transparent}
+.btn-light{background:#fff;color:var(--ink)}
+.skip{position:absolute;inset-inline-start:-999px}.skip:focus{inset-inline-start:12px;top:12px;z-index:99;background:#fff;padding:8px 14px;border-radius:8px}
+:focus-visible{outline:3px solid var(--stream);outline-offset:3px}
+
+/* header */
+header.site{position:sticky;top:0;z-index:40;background:rgba(246,241,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(169,122,69,.18)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:76px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand img{width:52px;height:auto}
+.brand b{font-family:var(--serif);font-size:1.35rem;font-weight:700;display:block;line-height:1.1}
+.brand small{display:block;font-size:.8rem;color:var(--olive)}
+.brand{white-space:nowrap;flex-shrink:0}
+@media (max-width:1400px){.brand small{display:none}}
+.menu{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.menu a{display:block;white-space:nowrap;padding:.45em .7em;border-radius:999px;color:var(--ink);text-decoration:none;font-weight:600}
+.menu a:hover{background:var(--sand-2)}
+.menu a.active{background:var(--sand)}
+.menu a.donate{background:var(--earth);color:#fff}
+.lang{border:1.5px solid var(--olive);background:transparent;border-radius:999px;padding:.35em .9em;font:inherit;font-weight:700;color:var(--olive);cursor:pointer}
+.burger{display:none;background:none;border:0;font-size:1.7rem;color:var(--ink);cursor:pointer}
+@media (max-width:1240px){
+  .brand small{display:none}.brand b{font-size:1.15rem}.brand img{width:44px}.lang{padding:.3em .7em;font-size:.9rem}
+  .hero h1{font-size:2.3rem}
+  .burger{display:block}
+  .menu{position:absolute;top:76px;inset-inline:0;flex-direction:column;background:var(--paper);padding:12px 22px 20px;border-bottom:1px solid var(--sand);display:none}
+  .menu.open{display:flex}
+}
+
+/* views */
+.view{display:none}
+.view.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+section{padding:84px 0}
+.tint{background:linear-gradient(180deg,var(--paper),var(--sand-2))}
+.wash{position:relative;isolation:isolate}
+.wash::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(40% 50% at 85% 20%,rgba(195,208,211,.55),transparent 70%),
+  radial-gradient(35% 45% at 10% 80%,rgba(213,173,113,.28),transparent 70%)}
+
+/* hero */
+.hero{position:relative;min-height:min(86vh,760px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,34,25,.05) 30%,rgba(40,34,25,.72))}
+.hero .wrap{position:relative;z-index:2;padding-bottom:70px;width:100%}
+.hero h1{color:#fff;max-width:18ch;text-shadow:0 2px 20px rgba(0,0,0,.25)}
+.hero p{font-size:1.25rem;max-width:40ch;opacity:.95}
+.hero .tag{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:.3em .9em;border-radius:999px;font-weight:600;margin-bottom:18px;backdrop-filter:blur(4px)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.hero .btn-ghost{color:#fff}
+
+.stream-div{display:block;width:100%;height:42px;color:var(--stream)}
+
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.pillar{background:var(--paper);border-radius:var(--radius);padding:30px 26px;box-shadow:var(--shadow);border-top:5px solid var(--sand)}
+.pillar:nth-child(1){border-color:var(--earth)}.pillar:nth-child(2){border-color:var(--stream)}.pillar:nth-child(3){border-color:var(--ochre)}
+.pillar svg{width:44px;height:44px;margin-bottom:10px}
+@media (max-width:820px){.pillars{grid-template-columns:1fr}}
+
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.split .ph{border-radius:24px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3}
+.split .ph img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){.split{grid-template-columns:1fr;gap:30px}}
+
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+.fact{background:var(--paper);border-radius:14px;padding:20px;text-align:center}
+.fact b{display:block;font-family:var(--serif);font-size:2rem;color:var(--earth);line-height:1}
+.fact span{font-size:.95rem;color:var(--ink-2)}
+@media (max-width:700px){.facts{grid-template-columns:repeat(2,1fr)}}
+
+/* projects */
+.grid-proj{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--paper);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card .im{aspect-ratio:4/3;overflow:hidden;background:var(--sand)}
+.card .im img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .im img{transform:scale(1.04)}
+.card .bd{padding:20px 22px 24px}
+.chip{display:inline-block;font-size:.78rem;font-weight:700;padding:.2em .7em;border-radius:999px;background:var(--sand-2);color:var(--earth-d);margin-inline-end:6px;margin-bottom:8px}
+.chip.blue{background:#E2ECF2;color:var(--stream-d)}
+.chip.green{background:#E7EADB;color:#5A6136}
+@media (max-width:960px){.grid-proj{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.grid-proj{grid-template-columns:1fr}}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 30px}
+.filters button{border:1.5px solid var(--sand);background:var(--paper);border-radius:999px;padding:.4em 1em;font:inherit;font-weight:600;color:var(--ink);cursor:pointer}
+.filters button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+.strip img{aspect-ratio:1;object-fit:cover;border-radius:14px;width:100%}
+@media (max-width:700px){.strip{grid-template-columns:repeat(2,1fr)}}
+
+/* fundraising */
+.grid-fund{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+@media (max-width:820px){.grid-fund{grid-template-columns:1fr}}
+.fund{background:var(--paper);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.fund .im{aspect-ratio:16/9;background:linear-gradient(135deg,var(--sky),var(--sand) 60%,var(--ochre));display:grid;place-items:center;font-size:4rem;overflow:hidden}
+.fund .im img{width:100%;height:100%;object-fit:cover}
+.fund .bd{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1}
+.fund .bar{height:10px;border-radius:99px;background:var(--sand-2);overflow:hidden;margin:14px 0 6px}
+.fund .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--stream),var(--earth));border-radius:99px}
+.fund .meta{display:flex;justify-content:space-between;font-size:.92rem;color:var(--ink-2);margin-bottom:18px}
+.fund .btn{align-self:flex-start;margin-top:auto}
+
+/* calendar */
+.draft{background:#FFF7E3;border:1.5px dashed var(--ochre);border-radius:14px;padding:12px 18px;margin:20px 0 28px;font-size:.98rem}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.tabs button{border:0;background:var(--paper);padding:.6em 1.3em;border-radius:12px;font:inherit;font-weight:700;color:var(--ink-2);cursor:pointer;box-shadow:0 1px 0 var(--sand)}
+.tabs button.on{background:var(--stream-d);color:#fff}
+.months{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media (max-width:820px){.months{grid-template-columns:1fr}}
+.month{background:var(--paper);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);position:relative}
+.month header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--sand);padding-bottom:10px;margin-bottom:12px}
+.month header h3{margin:0}
+.month header span{color:var(--olive);font-size:.92rem}
+.month .hol{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.month .hol span{background:#E2ECF2;color:var(--stream-d);border-radius:999px;padding:.15em .7em;font-size:.85rem;font-weight:600}
+.month dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.98rem}
+.month dt{font-weight:700;color:var(--earth-d)}
+.month dd{margin:0}
+.month .ev{margin-top:12px;padding-top:10px;border-top:1px dashed var(--sand);font-size:.95rem}
+.month .ev li{margin-bottom:2px}
+.tbd{color:#9a9182;font-style:italic}
+.weekly{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:8px 0 46px}
+.weekly div{background:var(--paper);border-radius:12px;padding:14px;text-align:center;font-size:.95rem}
+.weekly b{display:block;font-family:var(--serif);font-size:1.1rem}
+@media (max-width:700px){.weekly{grid-template-columns:repeat(2,1fr)}}
+
+/* donate */
+.give{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:34px}
+.give .box{background:var(--paper);border-radius:22px;padding:34px 30px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.give .box::after{content:"";position:absolute;inset-inline-end:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:var(--sand-2);z-index:0}
+.give .box>*{position:relative;z-index:1}
+.give .flag{font-size:2rem}
+.give ul{padding-inline-start:1.1em;margin:0 0 1.4em}
+.placeholder-note{font-size:.85rem;color:#9a6c2b;margin-top:10px}
+@media (max-width:820px){.give{grid-template-columns:1fr}}
+.needs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.needs div{background:rgba(255,255,255,.6);border-radius:14px;padding:18px}
+.needs b{display:block;font-family:var(--serif);font-size:1.15rem;margin-bottom:4px}
+@media (max-width:820px){.needs{grid-template-columns:1fr 1fr}}
+
+/* join / contact */
+.roles{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:24px 0}
+.roles div{background:var(--paper);border-radius:14px;padding:18px 20px;border-inline-start:5px solid var(--stream)}
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.contact div{background:var(--paper);border-radius:16px;padding:22px}
+.contact b{display:block;color:var(--earth-d)}
+@media (max-width:760px){.roles,.contact{grid-template-columns:1fr}}
+
+.page-head{padding:70px 0 30px}
+.page-head p{font-size:1.18rem;max-width:60ch;color:var(--ink-2)}
+
+/* newsletter band */
+.band{background:var(--olive);color:#F4EFE3;border-radius:26px;padding:42px;display:flex;gap:30px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.band h2{color:#fff;margin-bottom:.2em}
+
+@media (max-width:620px){
+  body{font-size:17px}
+  section{padding:56px 0}
+  .page-head{padding:44px 0 20px}
+  .hero{min-height:88svh}
+  .hero .wrap{padding-bottom:44px}
+  .hero p{font-size:1.08rem}
+  .ctas .btn{flex:1 1 auto;justify-content:center}
+  .band{padding:28px 22px}
+  .give .box{padding:26px 22px}
+  .needs{grid-template-columns:1fr}
+  .month{padding:18px}
+  .tabs button{flex:1 1 40%}
+  .split .ph{aspect-ratio:4/3}
+  .nav{height:64px}.menu{top:64px}
+}
+footer.site{background:var(--ink);color:#E9E1CF;padding:56px 0 30px;margin-top:40px}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+footer a{color:#E9E1CF}
+footer img{width:70px;filter:brightness(0) invert(.92) sepia(.15)}
+footer small{opacity:.7}
+@media (max-width:760px){footer .cols{grid-template-columns:1fr}}
+</style>
+</head>
+<body class="l-he">
+<a class="skip" href="#main"><span class="he">דלג לתוכן</span><span class="en">Skip to content</span></a>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#home">
+      <img src="img/logo.png" alt="">
+      <span><b><span class="he">בית ספר קדרון</span><span class="en">Kidron School</span></b>
+      <small><span class="he">ממ״ד קהילתי וסביבתי · אבנת</span><span class="en">Community & environmental · Ovnat</span></small></span>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="#home"><span class="he">ראשי</span><span class="en">Home</span></a></li>
+      <li><a href="#about"><span class="he">מי אנחנו</span><span class="en">About</span></a></li>
+      <li><a href="#projects"><span class="he">הפרויקטים שלנו</span><span class="en">Our projects</span></a></li>
+      <li><a href="#support"><span class="he">פרויקטים לתמיכה</span><span class="en">Support a project</span></a></li>
+      <li><a href="#calendar"><span class="he">תוכנית שנתית</span><span class="en">Year plan</span></a></li>
+      <li><a href="#join"><span class="he">הצטרפו אלינו</span><span class="en">Join us</span></a></li>
+      <li><a href="#donate" class="donate"><span class="he">תרומה</span><span class="en">Donate</span></a></li>
+    </ul>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="lang" id="lang" aria-label="Switch language"><span class="he">English</span><span class="en">עברית</span></button>
+      <button class="burger" id="burger" aria-label="Menu" aria-controls="menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HOME ============ -->
+<div class="view" data-view="home">
+  <div class="hero">
+    <img src="img/circle.webp" alt="">
+    <div class="wrap">
+      <span class="tag"><span class="he">📍 אבנת · מדבר יהודה · מעל ים המלח</span><span class="en">📍 Ovnat · Judean Desert · above the Dead Sea</span></span>
+      <h1><span class="he">מחוברים לאדמה, פתוחים אל השמיים</span><span class="en">Rooted in the earth, open to the sky</span></h1>
+      <p><span class="he">בית ספר ממ״ד קהילתי וסביבתי, שבו לומדים עם הידיים, עם הרגליים ועם הלב.</span><span class="en">A community and environmental religious state elementary school, where children learn with their hands, their feet and their hearts.</span></p>
+      <div class="ctas">
+        <a class="btn btn-light" href="#about"><span class="he">הכירו אותנו</span><span class="en">Meet us</span></a>
+        <a class="btn btn-ghost" href="#projects"><span class="he">מה עושים הילדים</span><span class="en">See what the kids are making</span></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="wash">
+    <div class="wrap">
+      <span class="eyebrow"><span class="he">מי אנחנו</span><span class="en">Who we are</span></span>
+      <h2><span class="he">בית ספר שנולד מתוך קהילה</span><span class="en">A school born of a community</span></h2>
+      <p style="max-width:62ch;font-size:1.15rem"><span class="he">החיבור לאדמה כולל עבודה ממשית עם הידיים באדמת מדבר יהודה והיכרות דרך הרגליים עם סביבתנו. הפתיחות לשמיים כוונתה להעמיק בלימוד ולתת מקום לתורה, לרוח ולתפילה.</span><span class="en">Being rooted in the earth means real hands-on work in the soil of the Judean Desert and getting to know our surroundings on foot. Being open to the sky means deepening our learning and making room for Torah, spirit and prayer.</span></p>
+      <div class="pillars">
+        <div class="pillar">
+          <svg viewBox="0 0 48 48" fill="none" stroke="#A97A45" stroke-width="2.2" stroke-linecap="round"><path d="M4 34c8-10 12-20 20-20s14 12 20 20"/><path d="M14 34c4-5 7-10 10-10s7 6 10 10"/></svg>
+          <h3><span class="he">אדמה ומדבר</span><span class="en">Earth & desert</span></h3>
+          <p><span class="he">יום מדבר שבועי, למידת חוץ, נטיעות, גינה ומערכת ביו־גז – הסביבה היא הכיתה.</span><span class="en">A weekly desert day, outdoor learning, planting, a garden and a biogas system – the landscape is our classroom.</span></p>
+        </div>
+        <div class="pillar">
+          <svg viewBox="0 0 48 48" fill="none" stroke="#6E9FC6" stroke-width="2.2" stroke-linecap="round"><path d="M6 20c10-4 26 4 36 0"/><path d="M6 28c10-4 26 4 36 0"/><path d="M14 36c8-3 16 2 24 0"/></svg>
+          <h3><span class="he">תורה, רוח ותפילה</span><span class="en">Torah, spirit & prayer</span></h3>
+          <p><span class="he">לימוד חי ומעמיק, מסיבות סידור וחומש, מסע סליחות לפנות בוקר ושירה שמלווה את השבוע.</span><span class="en">Living, deep learning, Siddur and Chumash celebrations, a pre-dawn Selichot walk and songs that carry the week.</span></p>
+        </div>
+        <div class="pillar">
+          <svg viewBox="0 0 48 48" fill="none" stroke="#D5AD71" stroke-width="2.2" stroke-linecap="round"><circle cx="16" cy="18" r="6"/><circle cx="32" cy="18" r="6"/><path d="M6 40c2-8 18-8 20 0M22 40c2-8 18-8 20 0"/></svg>
+          <h3><span class="he">דיאלוג וקהילה</span><span class="en">Dialogue & community</span></h3>
+          <p><span class="he">שפה של דיאלוג אמיתי בין מורים לתלמידים, למידה דרך אומנויות ואינטליגנציות שונות וקהילה לומדת של הורים.</span><span class="en">Real dialogue between teachers and students, learning through the arts and many intelligences, and a learning community of parents.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="stream-div" viewBox="0 0 1200 42" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 2 380 40 600 20 S1000 4 1200 22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M300 32 C460 22 560 40 760 30" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="2" stroke-linecap="round"/></svg>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow"><span class="he">פרויקטים</span><span class="en">Projects</span></span>
+        <h2><span class="he">הילדים בונים, שותלים, חוקרים</span><span class="en">The kids build, plant and explore</span></h2>
+        <p><span class="he">מעץ האבנים שנבנה ביום הראשון ועד מערכת הביו־גז שהופכת פסולת לגז בישול – כל פרויקט מתחיל בשאלה של ילדים ונגמר במשהו שאפשר לגעת בו.</span><span class="en">From the stone tree built on the very first day to a biogas system that turns food scraps into cooking gas – every project starts with a child's question and ends with something you can touch.</span></p>
+        <a class="btn btn-primary" href="#projects"><span class="he">לכל הפרויקטים ←</span><span class="en">All projects →</span></a>
+      </div>
+      <div class="ph"><img src="img/biogas.webp" alt="מערכת הביו־גז בחצר בית הספר" loading="lazy" style="object-position:center 70%"></div>
+    </div>
+    <div class="wrap strip">
+      <img src="img/feshkha.webp" alt="" loading="lazy"><img src="img/stonetree.webp" alt="" loading="lazy"><img src="img/cleanup.webp" alt="" loading="lazy"><img src="img/library.webp" alt="" loading="lazy">
+    </div>
+  </section>
+
+  <section class="tint">
+    <div class="wrap">
+      <div class="facts">
+        <div class="fact"><b>2025</b><span><span class="he">שנת הייסוד</span><span class="en">Founded</span></span></div>
+        <div class="fact"><b><span class="he">א׳–ג׳</span><span class="en">1–3</span></b><span><span class="he">כיתות השנה (ד׳ בשנה הבאה)</span><span class="en">Grades this year (4th next year)</span></span></div>
+        <div class="fact"><b><span class="he">ממ״ד</span><span class="en">Mamad</span></b><span><span class="he">חינוך ממלכתי דתי</span><span class="en">Religious state school</span></span></div>
+        <div class="fact"><b><span class="he">יום ד׳</span><span class="en">Wed</span></b><span><span class="he">יום מדבר שבועי</span><span class="en">Weekly Desert Day</span></span></div>
+      </div>
+      <div class="band" style="margin-top:48px">
+        <div>
+          <h2><span class="he">קול קדרון</span><span class="en">Kol Kidron</span></h2>
+          <p style="margin:0"><span class="he">עלון בית הספר – יוצא לאור אחת לשבועיים, עם יצירות, סיפורים ותמונות מהכיתות.</span><span class="en">Our school newsletter – every two weeks, with the children's work, stories and photos.</span></p>
+        </div>
+        <a class="btn btn-light" href="#" data-placeholder><span class="he">לגיליון האחרון</span><span class="en">Read the latest issue</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wash">
+    <div class="wrap split">
+      <div class="ph"><img src="img/tsukim.webp" alt="" loading="lazy"></div>
+      <div>
+        <span class="eyebrow"><span class="he">שותפים לצמיחה</span><span class="en">Grow with us</span></span>
+        <h2><span class="he">בית ספר צעיר, חלומות גדולים</span><span class="en">A young school with big dreams</span></h2>
+        <p><span class="he">הצללה, גינה, מתקני משחק, חדר יצירה וספרייה – כל תרומה עוזרת לילדים שלנו ללמוד בתוך הנוף המופלא הזה. התרומות מוכרות לצורכי מס בישראל ובחו״ל.</span><span class="en">Shade, a garden, play equipment, a creative studio and a library – every gift helps our children learn inside this extraordinary landscape. Donations are tax-deductible in Israel and abroad.</span></p>
+        <div class="ctas" style="margin-top:0"><a class="btn btn-primary" href="#support"><span class="he">פרויקטים לתמיכה</span><span class="en">Projects to support</span></a><a class="btn btn-ghost" href="#donate"><span class="he">תרומה כללית</span><span class="en">General gift</span></a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<div class="view" data-view="about">
+  <div class="page-head wash"><div class="wrap">
+    <span class="eyebrow"><span class="he">מי אנחנו</span><span class="en">About</span></span>
+    <h1><span class="he">מקום המחובר לאדמה ופתוח אל השמיים</span><span class="en">A place rooted in the earth and open to the sky</span></h1>
+  </div></div>
+  <section style="padding-top:20px">
+    <div class="wrap split">
+      <div>
+        <p class="he">אנחנו מבקשים להיות מקום המחובר לאדמה ופתוח אל השמיים. החיבור לאדמה כולל עבודה ממשית עם הידיים באדמת מדבר יהודה בו אנחנו נמצאים והיכרות דרך הרגליים עם סביבתנו, והפתיחות לשמיים כוונתה להעמיק בלימוד ולתת מקום לתורה, לרוח ולתפילה.</p>
+        <p class="he">אנחנו רוצים ליצור שפה חדשה של דיאלוג אמיתי בין מורים לתלמידים ובין הילדים לבין עצמם, ללמוד דרך אומנויות ואינטליגנציות שונות ולתת לתלמידים את הכלים הדרושים לגדול ולהתפתח כלומדים עצמאיים וכבני אדם חברתיים ומאמינים.</p>
+        <p class="en">We want to be a place rooted in the earth and open to the sky. Being rooted in the earth means real, hands-on work in the soil of the Judean Desert where we live, and getting to know our surroundings on foot. Being open to the sky means deepening our learning and making room for Torah, spirit and prayer.</p>
+        <p class="en">We want to create a new language of genuine dialogue between teachers and students, and among the children themselves; to learn through the arts and many kinds of intelligence; and to give our students the tools to grow into independent learners and into caring, believing members of a community.</p>
+      </div>
+      <div class="ph"><img src="img/grove.webp" alt="" loading="lazy"></div>
+    </div>
+  </section>
+  <section class="tint">
+    <div class="wrap split">
+      <div class="ph"><img src="img/cleanup.webp" alt="" loading="lazy"></div>
+      <div>
+        <span class="eyebrow"><span class="he">על השם</span><span class="en">Our name</span></span>
+        <h2><span class="he">למה ״קדרון״?</span><span class="en">Why “Kidron”?</span></h2>
+        <p class="he">את השם בחרה הקהילה כולה בהצבעה בקיץ תשפ״ה. נחל קדרון יורד מירושלים אל ים המלח ועובר ממש לידנו. בשנים גשומות זרמו בו מים, והילדים השיטו עליו סירות נייר. האתגר שלנו הוא לגלות את האור החבוי בנחל – ואולי עוד נראה ילדים משיטים בו סירות.</p>
+        <p class="en">The whole community chose the name in a vote in the summer of 2025. Nachal Kidron runs from Jerusalem down to the Dead Sea, right past us. In rainy years it once flowed, and children floated paper boats on it. Our challenge is to discover the light hidden in the stream – and maybe one day children will float boats on it again.</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <h2><span class="he">יום בקדרון</span><span class="en">A day at Kidron</span></h2>
+      <div class="weekly">
+        <div><b>7:45</b><span class="he">פתיחת השער</span><span class="en">Gates open</span></div>
+        <div><b>8:00</b><span class="he">תחילת היום</span><span class="en">School starts</span></div>
+        <div><b>14:30</b><span class="he">סיום, א׳–ד׳</span><span class="en">Ends, Sun–Wed</span></div>
+        <div><b>13:15</b><span class="he">סיום ביום ה׳ (חוגים בקליה)</span><span class="en">Ends Thu (clubs in Kalia)</span></div>
+        <div><b>11:45</b><span class="he">סיום ביום ו׳</span><span class="en">Ends Fri</span></div>
+      </div>
+      <p class="he">הסעות יוצאות כל בוקר מקדם ערבה דרך קליה לאבנת. יום רביעי הוא יום מדבר – למידת חוץ בנוף שסביבנו. בית הספר פועל במסגרת מועצה אזורית מגילות ים המלח ובפיקוח משרד החינוך.</p>
+      <p class="en">Buses run each morning from Kedem Arava via Kalia to Ovnat. Wednesday is Desert Day – outdoor learning in the landscape around us. The school operates within the Megilot Dead Sea Regional Council under the Ministry of Education.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ============ PROJECTS ============ -->
+<div class="view" data-view="projects">
+  <div class="page-head wash"><div class="wrap">
+    <span class="eyebrow"><span class="he">פרויקטים</span><span class="en">Projects</span></span>
+    <h1><span class="he">הפרויקטים שלנו</span><span class="en">Our projects</span></h1>
+    <p><span class="he">מה שהילדים, הצוות וההורים עושים בעצמם – למידה שיוצאת מהכיתה: לאדמה, לנחל, לקהילה ולעולם הרחב.</span><span class="en">What our kids, staff and parents do themselves – learning that leaves the classroom: into the soil, down the stream, out to the community and the wider world.</span></p>
+    <p style="font-size:1rem"><a href="#support"><span class="he">מחפשים פרויקט לתמוך בו? לפרויקטים שאנחנו מגייסים עבורם ←</span><span class="en">Looking for a project to support? See what we're raising funds for →</span></a></p>
+  </div></div>
+  <section style="padding-top:10px">
+    <div class="wrap">
+      <div class="filters" id="pfilters">
+        <button class="on" data-f="all"><span class="he">הכול</span><span class="en">All</span></button>
+        <button data-f="env"><span class="he">סביבה</span><span class="en">Environment</span></button>
+        <button data-f="out"><span class="he">למידת חוץ</span><span class="en">Outdoors</span></button>
+        <button data-f="com"><span class="he">קהילה וזהות</span><span class="en">Community & identity</span></button>
+      </div>
+      <div class="grid-proj" id="projgrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ SUPPORT (fundraising projects) ============ -->
+<div class="view" data-view="support">
+  <div class="page-head wash"><div class="wrap">
+    <span class="eyebrow"><span class="he">פרויקטים לתמיכה</span><span class="en">Support a project</span></span>
+    <h1><span class="he">עזרו לנו לבנות את החלום הבא</span><span class="en">Help us build what comes next</span></h1>
+    <p><span class="he">בית ספר צעיר במדבר צריך עוד הרבה: צל, גינה, מקום לשחק וליצור. בחרו פרויקט – כל תרומה מקרבת אותו.</span><span class="en">A young desert school still needs a lot: shade, a garden, places to play and create. Pick a project – every gift brings it closer.</span></p>
+  </div></div>
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="grid-fund" id="fundgrid"></div>
+      <p style="margin-top:34px;color:var(--ink-2)"><span class="he">רוצים לתרום לבית הספר באופן כללי? </span><span class="en">Prefer a general gift? </span><a href="#donate"><span class="he">לעמוד התרומות</span><span class="en">Go to the donation page</span></a></p>
+    </div>
+  </section>
+</div>
+
+<!-- ============ CALENDAR ============ -->
+<div class="view" data-view="calendar">
+  <div class="page-head wash"><div class="wrap">
+    <span class="eyebrow"><span class="he">תשפ״ז · 2026–2027</span><span class="en">5787 · 2026–2027</span></span>
+    <h1><span class="he">התוכנית השנתית</span><span class="en">Our year plan</span></h1>
+    <p><span class="he">מה לומדים בכל כיתה לאורך השנה – חגים, נושאי לימוד ואירועים מרכזיים.</span><span class="en">What each grade learns through the year – holidays, learning themes and key events.</span></p>
+  </div></div>
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="draft"><span class="he">📝 טיוטה: נושאי הלימוד מסומנים כ״ממתין לצוות״ עד שהמחנכות ימלאו אותם. החגים והאירועים מעודכנים לפי הידוע.</span><span class="en">📝 Draft: learning themes marked “awaiting staff” until teachers fill them in. Holidays and events reflect what is currently known.</span></div>
+      <div class="tabs" id="gradetabs"></div>
+      <div class="months" id="months"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ DONATE ============ -->
+<div class="view" data-view="donate">
+  <div class="page-head wash"><div class="wrap">
+    <span class="eyebrow"><span class="he">תרומה</span><span class="en">Donate</span></span>
+    <h1><span class="he">לגדל בית ספר במדבר</span><span class="en">Help a school grow in the desert</span></h1>
+    <p><span class="he">קדרון קם בשנת 2025 בזכות קהילה שהאמינה בו. התרומה שלכם הופכת חלומות של ילדים לגינה, צל, ספרים ומקום ליצור.</span><span class="en">Kidron opened in 2025 because a community believed in it. Your gift turns children's dreams into a garden, shade, books and a place to create.</span></p>
+  </div></div>
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="give">
+        <div class="box">
+          <div class="flag">🇮🇱</div>
+          <h2><span class="he">תורמים מישראל</span><span class="en">Giving from Israel</span></h2>
+          <ul>
+            <li><span class="he">קבלה מוכרת לפי סעיף 46</span><span class="en">Section 46 tax receipt</span></li>
+            <li><span class="he">תרומה חד־פעמית או חודשית</span><span class="en">One-time or monthly</span></li>
+            <li><span class="he">כרטיס אשראי / ביט / העברה בנקאית</span><span class="en">Credit card, Bit or bank transfer</span></li>
+          </ul>
+          <a class="btn btn-primary" href="#" data-placeholder="IL_DONATION_LINK"><span class="he">לתרומה בשקלים</span><span class="en">Donate in ₪</span></a>
+          <div class="placeholder-note">[IL_DONATION_LINK]</div>
+        </div>
+        <div class="box">
+          <div class="flag">🌍</div>
+          <h2><span class="he">תורמים מחו״ל</span><span class="en">Giving from abroad</span></h2>
+          <ul>
+            <li><span class="he">מוכר לצורכי מס בארה״ב (501(c)(3))</span><span class="en">US tax-deductible (501(c)(3))</span></li>
+            <li><span class="he">ניתן לסמן את התרומה לבית ספר קדרון</span><span class="en">Designate your gift to Kidron School</span></li>
+            <li><span class="he">דולרים, אירו, ליש״ט</span><span class="en">USD, EUR, GBP</span></li>
+          </ul>
+          <a class="btn btn-primary" href="#" data-placeholder="INTL_DONATION_LINK"><span class="he">לתרומה מחו״ל</span><span class="en">Donate in $</span></a>
+          <div class="placeholder-note">[INTL_DONATION_LINK]</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="tint">
+    <div class="wrap">
+      <h2><span class="he">מה התרומה מאפשרת</span><span class="en">What your gift makes possible</span></h2>
+      <div class="needs">
+        <div><b><span class="he">🌳 גינה והצללה</span><span class="en">🌳 Garden & shade</span></b><span class="he">עצים, שיחים וצל לחצר במדבר</span><span class="en">Trees, plants and shade for a desert yard</span></div>
+        <div><b><span class="he">🛝 מתקני משחק</span><span class="en">🛝 Play spaces</span></b><span class="he">חצר שמזמינה לתנועה ולדמיון</span><span class="en">A yard that invites movement and imagination</span></div>
+        <div><b><span class="he">🎨 חדר גוונים</span><span class="en">🎨 Gvanim studio</span></b><span class="he">חומרים למרחב היצירה והלמידה</span><span class="en">Materials for our art & learning space</span></div>
+        <div><b><span class="he">📚 ספרייה</span><span class="en">📚 Library</span></b><span class="he">ספרים לכל גיל ולכל שפה</span><span class="en">Books for every age and language</span></div>
+      </div>
+      <p style="margin-top:22px"><a class="btn btn-ghost" href="#support"><span class="he">בחרו פרויקט ספציפי לתמוך בו</span><span class="en">Choose a specific project to support</span></a></p>
+      <p style="margin-top:28px;font-size:.95rem;color:var(--ink-2)"><span class="he">[שם העמותה ומספר עמותה]</span><span class="en">[Amuta name & registration number]</span></p>
+    </div>
+  </section>
+</div>
+
+<!-- ============ JOIN ============ -->
+<div class="view" data-view="join">
+  <div class="page-head wash"><div class="wrap">
+    <span class="eyebrow"><span class="he">הצטרפו אלינו</span><span class="en">Join us</span></span>
+    <h1><span class="he">ממשיכים לצמוח</span><span class="en">We're still growing</span></h1>
+    <p><span class="he">מחנכים, משפחות ומתנדבים שרוצים להיות חלק מבית ספר שנבנה מאפס – נשמח להכיר.</span><span class="en">Educators, families and volunteers who want to be part of a school built from the ground up – we'd love to meet you.</span></p>
+  </div></div>
+  <section style="padding-top:0">
+    <div class="wrap split">
+      <div>
+        <h2><span class="he">לצוות</span><span class="en">Teaching team</span></h2>
+        <div class="roles">
+          <div><b><span class="he">מחנכ.ת</span><span class="en">Homeroom teacher</span></b></div>
+          <div><b><span class="he">יועצ.ת חינוכית</span><span class="en">School counselor</span></b></div>
+          <div><b><span class="he">מורה לאנגלית</span><span class="en">English teacher</span></b></div>
+          <div><b><span class="he">מורה לחינוך גופני</span><span class="en">PE teacher</span></b></div>
+        </div>
+        <p><span class="he">ייתכנו תמריצים למתאימים. פנו לאהרלה, מנהל בית הספר: <a href="tel:+972584081306">058-4081306</a></span><span class="en">Incentives may be available. Contact Aharale, the principal: <a href="tel:+972584081306">058-4081306</a></span></p>
+        <h2 style="margin-top:40px"><span class="he">למשפחות</span><span class="en">Families</span></h2>
+        <p><span class="he">שוקלים להצטרף לקהילות מגילות ים המלח? בואו לבקר ולהכיר את בית הספר.</span><span class="en">Thinking of moving to the Megilot Dead Sea communities? Come visit and see the school.</span></p>
+      </div>
+      <div class="ph"><img src="img/planting.webp" alt="" loading="lazy"></div>
+    </div>
+    <div class="wrap">
+      <div class="contact">
+        <div><b><span class="he">מזכירות</span><span class="en">Office</span></b><a href="tel:+97226487777">02-6487777</a><br><small><span class="he">א׳–ה׳, 8:00–12:00</span><span class="en">Sun–Thu, 8:00–12:00</span></small></div>
+        <div><b><span class="he">מנהל – אהרלה מייטליס</span><span class="en">Principal – Aharale Meitlis</span></b><a href="tel:+972584081306">058-4081306</a><br><small><span class="he">עדיף הודעה כתובה בווטסאפ</span><span class="en">Written WhatsApp messages preferred</span></small></div>
+        <div><b><span class="he">כתובת</span><span class="en">Address</span></b><span class="he">אבנת, מועצה אזורית מגילות ים המלח</span><span class="en">Ovnat, Megilot Dead Sea Regional Council</span><br><a href="mailto:info@kidronschool.org.il">info@kidronschool.org.il</a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ACCESSIBILITY ============ -->
+<div class="view" data-view="accessibility">
+  <div class="page-head"><div class="wrap">
+    <h1><span class="he">הצהרת נגישות</span><span class="en">Accessibility statement</span></h1>
+    <p class="he">אנו פועלים להנגשת האתר בהתאם לתקן הישראלי 5568 ולהנחיות WCAG 2.1 ברמה AA. האתר תומך בניווט מקלדת, בקוראי מסך ובהגדלת טקסט. נתקלתם בבעיה? פנו למזכירות: 02-6487777.</p>
+    <p class="en">We aim to meet Israeli Standard 5568 and WCAG 2.1 AA. The site supports keyboard navigation, screen readers and text zoom. Found a problem? Call the office: 02-6487777.</p>
+    <p class="tbd">[תאריך עדכון ורכז/ת נגישות]</p>
+  </div></div>
+</div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div>
+      <img src="img/logo.png" alt="">
+      <p style="margin-top:14px"><span class="he">בית ספר קדרון · ממ״ד קהילתי וסביבתי · אבנת, מגילות ים המלח</span><span class="en">Kidron School · Community & environmental religious state school · Ovnat, Megilot Dead Sea</span></p>
+    </div>
+    <div>
+      <p><a href="#about"><span class="he">מי אנחנו</span><span class="en">About</span></a><br><a href="#projects"><span class="he">הפרויקטים שלנו</span><span class="en">Our projects</span></a><br><a href="#calendar"><span class="he">תוכנית שנתית</span><span class="en">Year plan</span></a><br><a href="#support"><span class="he">פרויקטים לתמיכה</span><span class="en">Support a project</span></a><br><a href="#donate"><span class="he">תרומה</span><span class="en">Donate</span></a></p>
+    </div>
+    <div>
+      <p><span class="he">מזכירות</span><span class="en">Office</span>: 02-6487777<br><a href="#join"><span class="he">הצטרפו לצוות</span><span class="en">Join the team</span></a><br><a href="#accessibility"><span class="he">הצהרת נגישות</span><span class="en">Accessibility</span></a></p>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:24px"><small>© 2026 <span class="he">בית ספר קדרון</span><span class="en">Kidron School</span> · kidronschool.org.il</small></div>
+</footer>
+
+<script>
+/* ---------- projects data (edit here) ---------- */
+const PROJECTS=[
+ {img:'biogas',tag:'env',he:['מערכת ביו־גז','מערכת שהותקנה בחצר בית הספר ומפרקת פסולת אורגנית לגז בישול, ומהצד השני – לדשן לצמחים. הילדים מאכילים אותה ולומדים על אנרגיה מתחדשת.'],en:['Biogas system','Installed in our yard, it turns food scraps into cooking gas – and fertilizer for the garden. The children feed it and learn about renewable energy.'],when:'2026'},
+ {img:'planting',tag:'env',he:['משבר לצמיחה: נטיעות','אחרי טקס הזיכרון לשבעה באוקטובר שתלו הילדים עצים ושיחים בחצר החדשה, יחד עם המועצה, הורים ומכינת ״מלח הארץ״.'],en:['From loss to growth: planting day','After the October 7th memorial ceremony, the children planted trees and shrubs in the new yard with the council, parents and the Melach HaAretz pre-army program.'],when:'2026'},
+ {img:'stonetree',tag:'com',he:['עץ האבנים','כל ילד וכל משפחה ציירו אבן במפגש פתיחת השנה הראשונה, ויחד הן הפכו לעץ שמקבל את פני כל מי שנכנס.'],en:['The stone tree','At our very first opening night, every child and family painted a stone – together they became the tree that greets everyone at the gate.'],when:'2025'},
+ {img:'cleanup',tag:'env',he:['ניקיון נחל קדרון','יצאנו אל הנחל שעל שמו נקרא בית הספר ואספנו שקים של פסולת. דואגים לבית שלנו.'],en:['Cleaning up Nachal Kidron','We hiked into the stream our school is named for and hauled out bags of trash. Taking care of home.'],when:'2025–26'},
+ {img:'circle',tag:'out',he:['יום מדבר','פעם בשבוע הכיתה עוברת אל הנוף: מעגל פתיחה מול ים המלח, הליכה, חקר ומשחק.'],en:['Desert Day','Once a week the classroom moves outside: an opening circle facing the Dead Sea, then hiking, exploring and play.'],when:'Weekly'},
+ {img:'tsukim',tag:'out',he:['עיינות צוקים ועין פשחה','טיולים לשמורת הטבע הסמוכה – ללמוד על מים, צמחייה וחיים במדבר, ולהשתכשך.'],en:['Einot Tzukim & Ein Feshkha','Trips to the nature reserve next door to learn about water, plants and desert life – and to splash.'],when:'2025–26'},
+ {img:'elections',tag:'com',he:['בחירות בכיתה ג׳','כיתה ג׳ הקימה קלפי משלה ולמדה על דמוקרטיה, ובמקביל סבים וסבתות הגיעו לספר את סיפורי העלייה שלהם.'],en:['Grade 3 elections','Grade 3 set up its own ballot box to learn about democracy, while grandparents visited to tell their aliyah stories.'],when:'2026'},
+ {img:'library',tag:'com',he:['ביקור בספרייה','במסגרת לימודי התורה והספר ביקרו הילדים בספרייה פרטית של הרב דני שפרבר וגם בספרייה הלאומית בירושלים.'],en:['Visiting great libraries','As part of their Torah and book studies, the children visited Rabbi Dani Sperber’s private library and the National Library in Jerusalem.'],when:'2026'},
+ {img:'selichot',tag:'com',he:['מסע סליחות','לפנות בוקר, לפני ראש השנה, יוצאים הורים וילדים לטיילת הקדרון: מדורה, תה, שירת סליחות ותפילה עם הזריחה.'],en:['Selichot journey','Before dawn, ahead of Rosh Hashana, families walk the Kidron promenade together: a campfire, tea, Selichot songs and prayer at sunrise.'],when:'2025, 2026'},
+];
+const TAGN={env:['סביבה','Environment','green'],out:['למידת חוץ','Outdoors','blue'],com:['קהילה וזהות','Community','']};
+
+/* ---------- fundraising projects (edit here: goal / raised in ₪, link per project) ---------- */
+const FUND=[
+ {img:'planting',icon:'⛱️',he:['הצללה לחצר','במדבר צל הוא לא מותרות. פרגולות והצללה יאפשרו לילדים לשחק וללמוד בחוץ גם בחודשים החמים.'],en:['Shade for the yard','In the desert, shade isn’t a luxury. Pergolas and shade sails will let the kids play and learn outside even in the hot months.'],goal:null,raised:0,link:'#'},
+ {img:null,icon:'🌱',he:['גינה לימודית','גינה שהילדים מגדלים בעצמם – עם מערכת השקיה, ערוגות ודשן ממערכת הביו־גז שלנו.'],en:['Learning garden','A garden the children grow themselves – with irrigation, raised beds and compost from our own biogas system.'],goal:null,raised:0,link:'#'},
+ {img:null,icon:'🛝',he:['מתקני משחק','חצר שמזמינה תנועה, טיפוס ודמיון – מותאמת לנוף ולאקלים המדברי.'],en:['Play equipment','A yard that invites movement, climbing and imagination – built for the desert landscape and climate.'],goal:null,raised:0,link:'#'},
+ {img:'stonetree',icon:'🎨',he:['חדר גוונים','מרחב יצירה ולמידה צבעוני בממ״ד. צריך חומרי יצירה, ריהוט וציוד.'],en:['Gvanim creative studio','A colorful art and learning space in the school shelter. It needs art supplies, furniture and equipment.'],goal:null,raised:0,link:'#'},
+ {img:'library',icon:'📚',he:['ספריית בית הספר','מדפים, פינת קריאה וספרים לכל גיל – בעברית ובאנגלית.'],en:['School library','Shelves, a reading corner and books for every age – in Hebrew and English.'],goal:null,raised:0,link:'#'},
+];
+
+/* ---------- year plan data (edit here) ---------- */
+const GRADES=[{id:'all',he:'כל הכיתות',en:'All grades'},{id:'1',he:'כיתה א׳',en:'Grade 1'},{id:'2',he:'כיתה ב׳',en:'Grade 2'},{id:'3',he:'כיתה ג׳',en:'Grade 3'}];
+const TBD={he:'ממתין לצוות',en:'Awaiting staff'};
+const SUBJ=[['torah','תורה','Torah'],['lang','שפה','Language'],['math','חשבון','Math'],['env','סביבה ומדע','Nature & science']];
+const MONTHS=[
+ {he:'ספטמבר',en:'September',heb:'אלול–תשרי',hol:[['ראש השנה','Rosh Hashana'],['יום כיפור','Yom Kippur'],['סוכות','Sukkot']],ev:[{g:'all',he:'פתיחת שנת הלימודים',en:'First day of school'},{g:'all',he:'מסע סליחות לפנות בוקר',en:'Pre-dawn Selichot walk'}]},
+ {he:'אוקטובר',en:'October',heb:'תשרי–חשוון',hol:[['שמחת תורה','Simchat Torah'],['יום הזיכרון לשבעה באוקטובר','Oct 7 Memorial Day']],ev:[{g:'all',he:'נטיעות בחצר בית הספר',en:'Planting in the school yard'},{g:'3',he:'בחירות בכיתה',en:'Class elections'},{g:'1',he:'שבוע העליות – סבים מספרים',en:'Aliyah week – grandparents visit'},{g:'2',he:'שבוע העליות – סבים מספרים',en:'Aliyah week – grandparents visit'}]},
+ {he:'נובמבר',en:'November',heb:'חשוון–כסלו',hol:[],ev:[{g:'1',he:'טיול ראשון לעיינות צוקים',en:'First trip to Einot Tzukim'},{g:'all',he:'יום ספורט מועצתי',en:'Regional sports day'},{g:'all',he:'״באהלי קדר״ – ערב לימוד קהילתי',en:'“B’Ohalei Kedar” community learning night'}]},
+ {he:'דצמבר',en:'December',heb:'כסלו–טבת',hol:[['חנוכה','Chanukah']],ev:[{g:'2',he:'מסיבת חומש',en:'Chumash celebration'}]},
+ {he:'ינואר',en:'January',heb:'טבת–שבט',hol:[['ט״ו בשבט','Tu BiShvat']],ev:[{g:'all',he:'יום הורים',en:'Parent–teacher day'}]},
+ {he:'פברואר',en:'February',heb:'שבט–אדר א׳',hol:[],ev:[]},
+ {he:'מרץ',en:'March',heb:'אדר א׳–אדר ב׳',hol:[['פורים','Purim']],ev:[]},
+ {he:'אפריל',en:'April',heb:'אדר ב׳–ניסן',hol:[['פסח','Pesach']],ev:[]},
+ {he:'מאי',en:'May',heb:'ניסן–אייר',hol:[['יום השואה','Yom HaShoah'],['יום הזיכרון','Yom HaZikaron'],['יום העצמאות','Yom HaAtzmaut'],['ל״ג בעומר','Lag BaOmer'],['יום ירושלים','Yom Yerushalayim']],ev:[{g:'1',he:'מסיבת סידור',en:'Siddur celebration'}]},
+ {he:'יוני',en:'June',heb:'אייר–סיוון',hol:[['שבועות','Shavuot']],ev:[{g:'all',he:'סיום שנת הלימודים',en:'End of school year'}]},
+];
+/* fill topics like: MONTHS[0].topics = {'1':{torah:'...',lang:'...'}, '2':{...}} */
+
+let lang='he', grade='all';
+const L=(o)=>lang==='he'?o.he:o.en;
+
+function renderProjects(f='all'){
+  const g=document.getElementById('projgrid');
+  g.innerHTML=PROJECTS.filter(p=>f==='all'||p.tag===f).map(p=>{const t=TAGN[p.tag];return `
+  <article class="card"><div class="im"><img src="img/${p.img}.webp" alt="" loading="lazy"></div>
+  <div class="bd"><span class="chip ${t[2]}">${lang==='he'?t[0]:t[1]}</span><span class="chip">${p.when}</span>
+  <h3>${p[lang][0]}</h3><p style="margin:0">${p[lang][1]}</p></div></article>`}).join('');
+}
+function renderFund(){
+  const f=n=>'₪'+n.toLocaleString('en-US');
+  document.getElementById('fundgrid').innerHTML=FUND.map(p=>{
+    const pct=p.goal?Math.min(100,Math.round(p.raised/p.goal*100)):0;
+    return `<article class="fund"><div class="im">${p.img?`<img src="img/${p.img}.webp" alt="" loading="lazy" style="object-position:center ${p.img==='stonetree'?'75%':'50%'}">`:p.icon}</div>
+    <div class="bd"><h3>${p[lang][0]}</h3><p>${p[lang][1]}</p>
+    <div class="bar"><i style="width:${pct}%"></i></div>
+    <div class="meta"><span>${lang==='he'?'נאסף':'Raised'}: ${f(p.raised)}</span><span>${lang==='he'?'יעד':'Goal'}: ${p.goal?f(p.goal):(lang==='he'?'[יעד]':'[goal]')}</span></div>
+    <a class="btn btn-primary" href="${p.link}" ${p.link==='#'?'data-placeholder':''}>${lang==='he'?'לתמוך בפרויקט':'Support this project'}</a></div></article>`}).join('');
+  document.querySelectorAll('#fundgrid [data-placeholder]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+}
+function renderCal(){
+  document.getElementById('gradetabs').innerHTML=GRADES.map(g=>`<button data-g="${g.id}" class="${g.id===grade?'on':''}">${L(g)}</button>`).join('');
+  const show=grade==='all'?['1','2','3']:[grade];
+  document.getElementById('months').innerHTML=MONTHS.map(m=>{
+    const hol=m.hol.map(h=>`<span>${lang==='he'?h[0]:h[1]}</span>`).join('');
+    const ev=m.ev.filter(e=>grade==='all'||e.g==='all'||e.g===grade);
+    const seen=new Set(); const evu=ev.filter(e=>{const k=e.he;if(seen.has(k))return false;seen.add(k);return true});
+    let topics='';
+    if(grade!=='all'){
+      const t=(m.topics&&m.topics[grade])||{};
+      topics=`<dl>${SUBJ.map(s=>`<dt>${lang==='he'?s[1]:s[2]}</dt><dd>${t[s[0]]||`<span class="tbd">${L(TBD)}</span>`}</dd>`).join('')}</dl>`;
+    }
+    const gl=(e)=>e.g==='all'?'':` <small style="color:var(--olive)">(${L(GRADES.find(x=>x.id===e.g))})</small>`;
+    return `<article class="month"><header><h3>${L(m)}</h3><span>${m.heb}</span></header>
+      ${hol?`<div class="hol">${hol}</div>`:''}${topics}
+      ${evu.length?`<ul class="ev">${evu.map(e=>`<li>${L(e)}${grade==='all'?gl(e):''}</li>`).join('')}</ul>`:''}
+      ${grade==='all'&&!evu.length&&!hol?`<p class="tbd" style="margin:0">${L(TBD)}</p>`:''}</article>`;
+  }).join('');
+}
+
+function setLang(l){
+  lang=l; document.body.className='l-'+l;
+  document.documentElement.lang=l; document.documentElement.dir=l==='he'?'rtl':'ltr';
+  try{localStorage.setItem('kidron-lang',l)}catch(e){}
+  renderProjects(document.querySelector('#pfilters .on').dataset.f); renderFund(); renderCal();
+}
+function route(){
+  const v=(location.hash||'#home').slice(1);
+  const views=[...document.querySelectorAll('.view')];
+  const t=views.find(x=>x.dataset.view===v)||views[0];
+  views.forEach(x=>x.classList.toggle('on',x===t));
+  document.querySelectorAll('.menu a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+t.dataset.view));
+  document.getElementById('menu').classList.remove('open');
+  window.scrollTo(0,0);
+}
+document.getElementById('lang').onclick=()=>setLang(lang==='he'?'en':'he');
+document.getElementById('burger').onclick=e=>{const m=document.getElementById('menu');m.classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',m.classList.contains('open'))};
+document.getElementById('pfilters').onclick=e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#pfilters button').forEach(x=>x.classList.toggle('on',x===b));renderProjects(b.dataset.f)};
+document.getElementById('gradetabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;grade=b.dataset.g;renderCal()};
+document.querySelectorAll('[data-placeholder]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+window.addEventListener('hashchange',route);
+let saved='he';try{saved=localStorage.getItem('kidron-lang')||'he'}catch(e){}
+setLang(saved); route();
+</script>
+</body>
+</html>
