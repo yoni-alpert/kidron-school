@@ -141,6 +141,30 @@ section{padding:84px 0}
 .fund .meta{display:flex;justify-content:space-between;font-size:.92rem;color:var(--ink-2);margin-bottom:18px}
 .fund .btn{align-self:flex-start;margin-top:auto}
 
+/* yuval project page */
+.yv-hero{position:relative;min-height:min(78vh,640px);display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#1d1a14}
+.yv-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 30%;opacity:.9}
+.yv-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,17,12,.05) 20%,rgba(20,17,12,.78) 75%)}
+.yv-hero .wrap{position:relative;z-index:2;padding-bottom:60px;width:100%;display:flex;justify-content:flex-end}
+body.l-he .yv-hero .wrap{justify-content:flex-start}
+.yv-hero .txt{max-width:520px}
+.yv-hero h1{color:#fff}
+.yv-meter{background:var(--paper);border-radius:22px;box-shadow:var(--shadow);padding:28px 30px;margin-top:-40px;position:relative;z-index:3}
+.yv-meter .nums{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px}
+.yv-meter .nums b{font-family:var(--serif);font-size:2.2rem;color:var(--earth)}
+.yv-meter .bar{height:14px;border-radius:99px;background:var(--sand-2);overflow:hidden;margin:14px 0 18px}
+.yv-meter .bar i{display:block;height:100%;width:50%;background:linear-gradient(90deg,var(--stream),var(--earth));border-radius:99px}
+.yv-video{border-radius:20px;overflow:hidden;box-shadow:var(--shadow);background:#000;aspect-ratio:16/9}
+.yv-video video{width:100%;height:100%;display:block}
+.tiers{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:24px}
+.tiers div{background:var(--paper);border-radius:14px;padding:18px 14px;text-align:center;border-top:4px solid var(--sand)}
+.tiers b{display:block;font-family:var(--serif);font-size:1.5rem;color:var(--earth)}
+.tiers span{display:block;font-size:.92rem;color:var(--ink-2)}
+.tiers strong{display:block;margin:4px 0 2px}
+@media (max-width:900px){.tiers{grid-template-columns:repeat(2,1fr)}}
+.quote{font-family:var(--serif);font-size:1.35rem;line-height:1.5;border-inline-start:5px solid var(--stream);padding-inline-start:18px;margin:26px 0;color:var(--ink)}
+.soon{display:inline-block;margin-top:10px;font-size:.9rem;color:#9a6c2b}
+
 /* calendar */
 .draft{background:#FFF7E3;border:1.5px dashed var(--ochre);border-radius:14px;padding:12px 18px;margin:20px 0 28px;font-size:.98rem}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
@@ -414,6 +438,84 @@ footer small{opacity:.7}
   </section>
 </div>
 
+<!-- ============ YUVAL / AYIN TOVA CORNER ============ -->
+<div class="view" data-view="yuval">
+  <div class="yv-hero">
+    <img src="img/yuval-prayer.webp" alt="">
+    <div class="wrap"><div class="txt">
+      <span class="eyebrow" style="color:var(--ochre)"><span class="he">פרויקט לתמיכה · עם מיזם אבן הפינה</span><span class="en">Support a project · with Even HaPina</span></span>
+      <h1><span class="he">פינת עין טובה לזכר יובל ניר הי״ד</span><span class="en">A “Good Eye” Corner in memory of Yuval Nir HY”D</span></h1>
+      <p style="font-size:1.15rem"><span class="he">בונים יחד, בקדרון, מקום של חיים – שבו הילדים לומדים לראות את הטוב שבאחר ולומר אותו בקול.</span><span class="en">Together at Kidron, we’re building a living place – where children learn to see the good in others and say it out loud.</span></p>
+    </div></div>
+  </div>
+  <div class="wrap">
+    <div class="yv-meter">
+      <div class="nums">
+        <div><b>₪20,000</b> <span class="he">מתוך ₪40,000</span><span class="en">of ₪40,000</span></div>
+        <div><span class="he">כבר בחצי הדרך – נותרו ₪20,000</span><span class="en">Halfway there – ₪20,000 to go</span></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <a class="btn btn-primary" id="yvDonate" href="#" data-placeholder><span class="he">לתרומה ב-JGive</span><span class="en">Donate on JGive</span></a>
+      <span class="soon" id="yvSoon"><span class="he">דף התרומה ייפתח בקרוב</span><span class="en">The donation page opens soon</span></span>
+      <div style="font-size:.9rem;color:var(--ink-2);margin-top:10px"><span class="he">התרומה מוכרת לצורכי מס בישראל, בארה״ב, בקנדה ובבריטניה, דרך עמותת לב אחד (ע״ר 580657344).</span><span class="en">Tax-deductible in Israel, the US, Canada and the UK, through Lev Echad (Reg. 580657344).</span></div>
+      <div id="yvEmbed"></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow"><span class="he">יובל</span><span class="en">Yuval</span></span>
+        <h2><span class="he">איש של עין טובה</span><span class="en">A man with a good eye</span></h2>
+        <p class="he">רס״ב (מיל׳) יובל ניר הי״ד, בן 43 מכפר עציון, לוחם בגדוד הסיור 6646, נפל בקרב בח׳אן יונס בינואר 2024. הוא היה נשוי לאילה ואב לחמישה, גדל בקיבוץ מגדל עוז, ובכל בוקר בחמש ועשרים קבע ללמוד תורה. יובל הוא אחיה של ענת, תושבת אבנת, ודודו של תלמיד בקדרון.</p>
+        <p class="en">Warrant Officer (res.) Yuval Nir HY”D, 43, of Kfar Etzion, a soldier in the 6646 Reconnaissance Battalion, fell in battle in Khan Younis in January 2024. He was married to Ayala and a father of five, grew up on Kibbutz Migdal Oz, and studied Torah every morning at 5:20. Yuval is the brother of Anat, an Ovnat resident, and the uncle of a Kidron student.</p>
+        <p class="he">במילואים, כשמישהו כעס, יובל ביקש: ״עם ישראל צריך זכויות – עכשיו כל אחד יגיד זכות.״ מזה נולד מנהג משפחתי: בכל יום, בתורו, כל אחד מספר משהו טוב על אדם אחר. היום המשפחה ממשיכה את ״העין הטובה של יובל״, והוריו פועלים להכניס אותה לבתי ספר.</p>
+        <p class="en">In the reserves, when someone was angry, Yuval would say: “The people of Israel need merits – now everyone say something good.” That became a family tradition: every day, in turn, someone shares something good about another person. Today his family carries on “Yuval’s Good Eye”, and his parents are working to bring it into schools.</p>
+      </div>
+      <div class="ph"><img src="img/yuval-uniform.webp" alt="" loading="lazy" style="object-position:center 30%"></div>
+    </div>
+  </section>
+
+  <section class="tint">
+    <div class="wrap">
+      <span class="eyebrow"><span class="he">הסרטון</span><span class="en">The film</span></span>
+      <h2><span class="he">״זה לא להנציח מישהו – זה להמשיך אותו״</span><span class="en">“It’s not about commemorating someone – it’s about continuing him”</span></h2>
+      <div class="yv-video he"><video controls preload="none" poster="img/yuval-poster.webp" playsinline><source src="media/yuval-ayin-tova.mp4" type="video/mp4"></video></div>
+      <div class="yv-video en"><video controls preload="none" poster="img/yuval-poster.webp" playsinline><source src="media/yuval-ayin-tova-en.mp4" type="video/mp4"></video></div>
+      <p style="margin-top:12px;font-size:.95rem;color:var(--ink-2)"><span class="he">האחים של יובל מספרים על העין הטובה. באדיבות משפחת ניר.</span><span class="en">Yuval’s siblings on the good eye. English subtitles. Courtesy of the Nir family.</span></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow"><span class="he">הפינה</span><span class="en">The corner</span></span>
+        <h2><span class="he">פינת הנצחה שהיא מקום של חיים</span><span class="en">A memorial that is a place of life</span></h2>
+        <p class="he">בחצר בית הספר נבנה פינת עין טובה. כל יום יתכנסו בה הילדים למעגלי עין טובה, שיעמיקו את השפה הזאת בבית הספר ויחברו בין דמותו של יובל לילדים שלומדים כאן היום.</p>
+        <p class="en">In our school yard we’re building a Good Eye Corner. Every day the children will gather there for “good eye” circles, deepening this language in our school and connecting Yuval to the children who learn here today.</p>
+        <p class="he">את הפינה נבנה יחד עם מיזם <a href="https://www.instagram.com/even_hapina/">אבן הפינה</a> – משפחת ניר, הילדים, ההורים והקהילה, בידיים. את אבן הפינה ייסד עדי אלוש ז״ל, לוחם צנחנים לשעבר ושכנו של מנהל בית הספר, שבנה פינות הנצחה עם משפחות הנופלים. עדי נהרג בתאונת דרכים בסרי לנקה, ומשפחתו ממשיכה את דרכו.</p>
+        <p class="en">We’re building it with <a href="https://www.instagram.com/even_hapina/">Even HaPina</a> – the Nir family, our children, parents and community, by hand. Even HaPina was founded by the late Adi Alush, a former paratrooper and neighbor of our principal, who built memorial corners together with bereaved families. Adi was killed in a road accident in Sri Lanka, and his family carries on his work.</p>
+        <div class="quote"><span class="he">״אם באמת יהיה מקום שיש בו פינה של עין טובה – זו הגשמת חלום של ההורים שלי.״ – ענת, אחותו של יובל</span><span class="en">“If there really is a place with a Good Eye corner – it’s my parents’ dream come true.” – Anat, Yuval’s sister</span></div>
+      </div>
+      <div class="ph"><img src="img/stonetree.webp" alt="" loading="lazy" style="object-position:center 60%"></div>
+    </div>
+  </section>
+
+  <section class="tint">
+    <div class="wrap">
+      <h2><span class="he">כל תרומה בונה את הפינה</span><span class="en">Every gift builds the corner</span></h2>
+      <div class="tiers">
+        <div><b>₪180</b><strong><span class="he">ח״י</span><span class="en">Chai</span></strong><span class="he">שתיל בגינת הפינה</span><span class="en">A plant for the corner’s garden</span></div>
+        <div><b>₪360</b><strong><span class="he">אבן לפינה</span><span class="en">A stone</span></strong><span class="he">חומרים ליום בנייה עם הילדים</span><span class="en">Materials for a build day with the kids</span></div>
+        <div><b>₪1,000</b><strong><span class="he">ספסל</span><span class="en">A bench</span></strong><span class="he">ספסל עץ למעגלי העין הטובה</span><span class="en">A wooden bench for good-eye circles</span></div>
+        <div><b>₪1,800</b><strong><span class="he">עין טובה</span><span class="en">Good Eye</span></strong><span class="he">קורה בפרגולה</span><span class="en">A beam in the pergola</span></div>
+        <div><b>₪5,000</b><strong><span class="he">שותף מייסד</span><span class="en">Founding partner</span></strong><span class="he">אבן הזיכרון והשלט עם סיפורו של יובל</span><span class="en">The memorial stone and Yuval’s story sign</span></div>
+      </div>
+      <p style="margin-top:28px"><a class="btn btn-primary yvDonate2" href="#" data-placeholder><span class="he">לתרומה</span><span class="en">Donate</span></a></p>
+    </div>
+  </section>
+</div>
+
 <!-- ============ CALENDAR ============ -->
 <div class="view" data-view="calendar">
   <div class="page-head wash"><div class="wrap">
@@ -556,8 +658,13 @@ const PROJECTS=[
 ];
 const TAGN={env:['סביבה','Environment','green'],out:['למידת חוץ','Outdoors','blue'],com:['קהילה וזהות','Community','']};
 
+/* ---------- JGive for the Yuval corner: paste the JGive page link (and embed code, if Lev Echad provides one) ---------- */
+const JGIVE_YUVAL='';      /* e.g. https://www.jgive.com/new/he/ils/donation-targets/XXXXXX */
+const JGIVE_YUVAL_EMBED='';/* optional iframe embed code from JGive (charity area > Embed) */
+
 /* ---------- fundraising projects (edit here: goal / raised in ₪, link per project) ---------- */
 const FUND=[
+ {img:'yuval-prayer',icon:'🤍',page:'#yuval',he:['פינת עין טובה לזכר יובל ניר הי״ד','בונים עם מיזם אבן הפינה פינה שבה הילדים יתכנסו כל יום למעגלי עין טובה – לראות את הטוב שבאחר ולומר אותו בקול.'],en:['A Good Eye Corner for Yuval Nir HY”D','With Even HaPina, we’re building a corner where children gather daily for “good eye” circles – seeing the good in others and saying it out loud.'],goal:40000,raised:20000,link:'#yuval'},
  {img:'planting',icon:'⛱️',he:['הצללה לחצר','במדבר צל הוא לא מותרות. פרגולות והצללה יאפשרו לילדים לשחק וללמוד בחוץ גם בחודשים החמים.'],en:['Shade for the yard','In the desert, shade isn’t a luxury. Pergolas and shade sails will let the kids play and learn outside even in the hot months.'],goal:null,raised:0,link:'#'},
  {img:null,icon:'🌱',he:['גינה לימודית','גינה שהילדים מגדלים בעצמם – עם מערכת השקיה, ערוגות ודשן ממערכת הביו־גז שלנו.'],en:['Learning garden','A garden the children grow themselves – with irrigation, raised beds and compost from our own biogas system.'],goal:null,raised:0,link:'#'},
  {img:null,icon:'🛝',he:['מתקני משחק','חצר שמזמינה תנועה, טיפוס ודמיון – מותאמת לנוף ולאקלים המדברי.'],en:['Play equipment','A yard that invites movement, climbing and imagination – built for the desert landscape and climate.'],goal:null,raised:0,link:'#'},
@@ -601,8 +708,14 @@ function renderFund(){
     <div class="bd"><h3>${p[lang][0]}</h3><p>${p[lang][1]}</p>
     <div class="bar"><i style="width:${pct}%"></i></div>
     <div class="meta"><span>${lang==='he'?'נאסף':'Raised'}: ${f(p.raised)}</span><span>${lang==='he'?'יעד':'Goal'}: ${p.goal?f(p.goal):(lang==='he'?'[יעד]':'[goal]')}</span></div>
-    <a class="btn btn-primary" href="${p.link}" ${p.link==='#'?'data-placeholder':''}>${lang==='he'?'לתמוך בפרויקט':'Support this project'}</a></div></article>`}).join('');
-  document.querySelectorAll('#fundgrid [data-placeholder]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+    <a class="btn btn-primary" href="${p.link}" ${p.link==='#'?'data-placeholder':''}>${p.page?(lang==='he'?'לעמוד הפרויקט':'See the project'):(lang==='he'?'לתמוך בפרויקט':'Support this project')}</a></div></article>`}).join('');
+}
+function wireYuval(){
+  document.querySelectorAll('#yvDonate, .yvDonate2').forEach(a=>{
+    if(JGIVE_YUVAL){a.href=JGIVE_YUVAL;a.target='_blank';a.rel='noopener';a.removeAttribute('data-placeholder');}
+  });
+  const soon=document.getElementById('yvSoon'); if(soon) soon.style.display=JGIVE_YUVAL?'none':'inline-block';
+  const em=document.getElementById('yvEmbed'); if(em&&JGIVE_YUVAL_EMBED&&!em.innerHTML){em.innerHTML=JGIVE_YUVAL_EMBED;em.style.marginTop='20px';}
 }
 function renderCal(){
   document.getElementById('gradetabs').innerHTML=GRADES.map(g=>`<button data-g="${g.id}" class="${g.id===grade?'on':''}">${L(g)}</button>`).join('');
@@ -628,7 +741,7 @@ function setLang(l){
   lang=l; document.body.className='l-'+l;
   document.documentElement.lang=l; document.documentElement.dir=l==='he'?'rtl':'ltr';
   try{localStorage.setItem('kidron-lang',l)}catch(e){}
-  renderProjects(document.querySelector('#pfilters .on').dataset.f); renderFund(); renderCal();
+  renderProjects(document.querySelector('#pfilters .on').dataset.f); renderFund(); renderCal(); wireYuval();
 }
 function route(){
   const v=(location.hash||'#home').slice(1);
@@ -643,7 +756,7 @@ document.getElementById('lang').onclick=()=>setLang(lang==='he'?'en':'he');
 document.getElementById('burger').onclick=e=>{const m=document.getElementById('menu');m.classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',m.classList.contains('open'))};
 document.getElementById('pfilters').onclick=e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#pfilters button').forEach(x=>x.classList.toggle('on',x===b));renderProjects(b.dataset.f)};
 document.getElementById('gradetabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;grade=b.dataset.g;renderCal()};
-document.querySelectorAll('[data-placeholder]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));
+document.addEventListener('click',e=>{if(e.target.closest('[data-placeholder]'))e.preventDefault();});
 window.addEventListener('hashchange',route);
 let saved='he';try{saved=localStorage.getItem('kidron-lang')||'he'}catch(e){}
 setLang(saved); route();
