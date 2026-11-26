@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: { 'content-type': 'application/json', 'user-agent': 'kidronschool.org.il progress meter' },
       body: JSON.stringify({
-        query: 'query($id:ID!){donationTarget(id:$id){id donationTargetSummary{totalAmount donationsPlusAdditionalDonationsCount} goalProperty{amount}}}',
+        query: 'query($id:ID!){donationTarget(id:$id){id donationTargetSummary{totalAmount(currency:ILS) donationsPlusAdditionalDonationsCount} goalProperty{amount}}}',
         variables: { id }
       })
     });
