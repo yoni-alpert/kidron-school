@@ -461,8 +461,8 @@ footer small{opacity:.7}
   <div class="wrap">
     <div class="yv-meter">
       <div class="nums">
-        <div><b id="yvRaised">₪20,000</b> <span class="he">מתוך ₪40,000</span><span class="en">of ₪40,000</span></div>
-        <div id="yvLeft"><span class="he">כבר בחצי הדרך – נותרו ₪20,000</span><span class="en">Halfway there – ₪20,000 to go</span></div>
+        <div><b id="yvRaised">₪20,000</b> <span id="yvOf">מתוך ₪40,000</span></div>
+        <div id="yvLeft">כבר בחצי הדרך – נותרו ₪20,000</div>
       </div>
       <div class="bar"><i id="yvBar"></i></div>
       <a class="btn btn-primary" id="yvDonate" href="#" data-placeholder><span class="he">לתרומה ב-JGive</span><span class="en">Donate on JGive</span></a>
@@ -725,20 +725,33 @@ function renderFund(){
   const f=n=>'₪'+n.toLocaleString('en-US');
   document.getElementById('fundgrid').innerHTML=FUND.map(p=>{
     const pct=p.goal?Math.min(100,Math.round(p.raised/p.goal*100)):0;
+    const yv=p.page==='#yuval'&&lang==='en'?yvMoney():null, f2=n=>yv?'$'+Math.round(n).toLocaleString('en-US'):f(n);
     return `<article class="fund"><div class="im">${p.img?`<img src="img/${p.img}.webp" alt="" loading="lazy" style="object-position:center ${p.img==='stonetree'?'75%':'50%'}">`:p.icon}</div>
     <div class="bd"><h3>${p[lang][0]}</h3><p>${p[lang][1]}</p>
     <div class="bar"><i style="width:${pct}%"></i></div>
-    <div class="meta"><span>${lang==='he'?'נאסף':'Raised'}: ${f(p.raised)}</span><span>${lang==='he'?'יעד':'Goal'}: ${p.goal?f(p.goal):(lang==='he'?'[יעד]':'[goal]')}</span></div>
+    <div class="meta"><span>${lang==='he'?'נאסף':'Raised'}: ${f2(yv?yv.raised:p.raised)}</span><span>${lang==='he'?'יעד':'Goal'}: ${p.goal?f2(yv?yv.goal:p.goal):(lang==='he'?'[יעד]':'[goal]')}</span></div>
     <a class="btn btn-primary" href="${p.link}" ${p.link==='#'?'data-placeholder':''}>${p.page?(lang==='he'?'לעמוד הפרויקט':'See the project'):(lang==='he'?'לתמוך בפרויקט':'Support this project')}</a></div></article>`}).join('');
 }
-function setYuvalMeter(raised){
-  const fmt=n=>'₪'+Math.round(n).toLocaleString('en-US'), left=Math.max(0,YUVAL_GOAL-raised), pct=Math.min(100,Math.round(raised/YUVAL_GOAL*100));
-  const p=FUND.find(x=>x.page==='#yuval'); if(p) p.raised=raised;
+let YV_RAISED=YUVAL_COMMITTED, FX=2.95; /* ILS per USD; live rate replaces this */
+const rnd=(n,s)=>Math.round(n/s)*s;
+function yvMoney(){ /* goal, raised, left in the page language's currency */
+  if(lang!=='en') return {cur:'₪',goal:YUVAL_GOAL,raised:YV_RAISED,left:Math.max(0,YUVAL_GOAL-YV_RAISED)};
+  const goal=rnd(YUVAL_GOAL/FX,100), raised=Math.min(goal,rnd(goal*YV_RAISED/YUVAL_GOAL,10));
+  return {cur:'$',goal,raised,left:Math.max(0,goal-raised)};
+}
+function setYuvalMeter(raised){ if(typeof raised==='number') YV_RAISED=raised;
+  const p=FUND.find(x=>x.page==='#yuval'); if(p) p.raised=YV_RAISED;
   const r=document.getElementById('yvRaised'); if(!r) return;
-  r.textContent=fmt(raised); document.getElementById('yvBar').style.width=pct+'%';
-  document.getElementById('yvLeft').innerHTML=left>0
-    ?`<span class="he">${pct}% מהיעד – נותרו ${fmt(left)}</span><span class="en">${pct}% of the goal – ${fmt(left)} to go</span>`
-    :`<span class="he">הגענו ליעד! תודה לכולם 🤍</span><span class="en">We reached the goal! Thank you all 🤍</span>`;
+  const m=yvMoney(), fmt=n=>m.cur+Math.round(n).toLocaleString('en-US'), he=lang!=='en';
+  const pct=Math.min(100,Math.round(YV_RAISED/YUVAL_GOAL*100));
+  r.textContent=fmt(m.raised); document.getElementById('yvBar').style.width=pct+'%';
+  document.getElementById('yvOf').textContent=(he?'מתוך ':'of ')+fmt(m.goal);
+  document.getElementById('yvLeft').textContent= m.left<=0 ? (he?'הגענו ליעד! תודה לכולם 🤍':'We reached the goal! Thank you all 🤍')
+    : pct===50 ? (he?'כבר בחצי הדרך – נותרו '+fmt(m.left):'Halfway there – '+fmt(m.left)+' to go')
+    : (he?pct+'% מהיעד – נותרו '+fmt(m.left):pct+'% of the goal – '+fmt(m.left)+' to go');
+}
+function loadFx(){
+  fetch('/api/fx').then(r=>r.ok?r.json():null).then(d=>{ if(d&&d.ilsPerUsd){FX=d.ilsPerUsd; setYuvalMeter(); renderFund();} }).catch(()=>{});
 }
 function loadYuvalTotal(){
   if(!JGIVE_YUVAL_ID) return;
@@ -777,7 +790,7 @@ function setLang(l){
   lang=l; document.body.className='l-'+l;
   document.documentElement.lang=l; document.documentElement.dir=l==='he'?'rtl':'ltr';
   try{localStorage.setItem('kidron-lang',l)}catch(e){}
-  renderProjects(document.querySelector('#pfilters .on').dataset.f); renderFund(); renderCal(); wireYuval();
+  renderProjects(document.querySelector('#pfilters .on').dataset.f); renderFund(); renderCal(); wireYuval(); setYuvalMeter();
 }
 function route(){
   const v=(location.hash||'#home').slice(1);
@@ -795,7 +808,7 @@ document.getElementById('gradetabs').onclick=e=>{const b=e.target.closest('butto
 document.addEventListener('click',e=>{if(e.target.closest('[data-placeholder]'))e.preventDefault();});
 window.addEventListener('hashchange',route);
 let saved='he';try{saved=localStorage.getItem('kidron-lang')||'he'}catch(e){}
-setLang(saved); route(); loadYuvalTotal();
+setLang(saved); route(); loadYuvalTotal(); loadFx();
 </script>
 </body>
 </html>
