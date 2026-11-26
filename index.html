@@ -235,7 +235,12 @@ body.l-he .yv-hero .wrap{justify-content:flex-start}
   .split .ph{aspect-ratio:4/3}
   .nav{height:64px}.menu{top:64px}
 }
-footer.site{background:var(--ink);color:#E9E1CF;padding:56px 0 30px;margin-top:40px}
+.partners{margin-top:40px;background:#fff;border-top:1px solid var(--sand-2);padding:28px 0}
+.partners .wrap{display:flex;align-items:center;justify-content:center;gap:34px;flex-wrap:wrap}
+.partners p{margin:0;color:var(--ink-2);font-size:.95rem}
+.partners img{height:76px;width:auto;display:block}
+@media (max-width:760px){.partners .wrap{gap:18px}.partners p{width:100%;text-align:center}.partners img{height:60px}}
+footer.site{background:var(--ink);color:#E9E1CF;padding:56px 0 30px}
 footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
 footer a{color:#E9E1CF}
 footer img{width:70px;filter:brightness(0) invert(.92) sepia(.15)}
@@ -628,6 +633,13 @@ footer small{opacity:.7}
 
 </main>
 
+<section class="partners" aria-label="שותפים">
+  <div class="wrap">
+    <p><span class="he">בשיתוף</span><span class="en">In partnership with</span></p>
+    <img src="img/logo-megilot.webp" alt="מועצה אזורית מגילות ים המלח · Megilot Dead Sea Regional Council" loading="lazy">
+    <!-- CHEMED: <img src="img/logo-chemed.webp" alt="החינוך הממלכתי-דתי · Religious State Education" loading="lazy"> -->
+  </div>
+</section>
 <footer class="site">
   <div class="wrap cols">
     <div>
